@@ -1,0 +1,296 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap" rel="stylesheet">
+    <title>Todo app</title>
+    <script>
+      function myFunction() {
+        var element = document.body;
+        var new_item = document.getElementById("nw-itm");
+        var sun = document.getElementById("logo");
+        var input = document.getElementById("nw-inpt");
+        var cntr = document.getElementById("drk-con");
+        var cntr1 = document.getElementById("drk-con1");  
+        element.classList.toggle("dark-mode");
+        new_item.classList.toggle("drk-new-item");
+        input.classList.toggle("drk-inpt");
+        cntr.classList.toggle("drk-con");
+        cntr1.classList.toggle("drk-con");
+        }
+    </script>
+    <style>
+        body{
+            font-size: 18px;
+            font-family: 'Josefin Sans', sans-serif;
+            background-image:  url({% static 'images/bg-image.jpg' %});
+            background-repeat: no-repeat;
+        }
+
+
+        .heading{
+          max-width: 450px;
+          width: 100%;
+          margin: 70px auto;
+          font-weight: 700;
+          color: white;
+          font-size: 41px;
+          margin-bottom: -120px;
+        }
+        .new-item{
+            background: #fff;
+            max-width: 450px;
+            width: 100%;
+            margin: 150px auto;
+            margin-bottom: -50px;
+            padding: 9px 15px 9px 15px;
+            border-radius: 5px;
+            box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+        }
+        .drk-new-item{
+            background: hsl(235, 24%, 19%);
+            
+        }
+        .drk-inpt{
+          background-color: hsl(235, 24%, 19%);
+        }
+        button {
+            background: none;
+            border: 0px;
+            color: #888;
+            font-size: 18px;
+            width: 60px;
+            margin: 10px 0 0;
+            outline: none;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        button:hover {
+            color: black;
+            font-weight: 500;
+        }
+        input[type=text] {
+            border: none;
+            margin-left: 35px;
+            background-color: none;
+            outline: 0;
+            font-size: 18px;
+            width: 300px;
+            font-family: 'Josefin Sans', sans-serif;
+            height: 30px;
+          }
+          
+        input[type=text]:focus {
+            border: none;
+            background-color: none;
+            outline: 0;
+            width: 300px;
+            height: 30px;
+        }
+        .container{
+            background: #fff;
+            max-width: 400px;
+            width: 100%;
+            margin: 80px auto;
+            padding: 25px;
+            border-radius: 5px;
+
+            box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+        }  
+          .center { 
+            height: 40px;
+            width: 300px; 
+            overflow: auto;
+            margin: auto; 
+            top: 0; left: 0; bottom: 0; right: 0; 
+          }
+          .check {
+            display: block;
+            position: relative;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          
+          /* Hide the browser's default checkbox */
+          .check input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+          }
+          .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            background-color: rgba(47, 73, 95, 0);
+            border: 1px solid rgb(44, 51, 85);
+            position: absolute;
+          }
+          
+          /* On mouse-over, add a grey background color */
+          .check:hover input ~ .checkmark {
+            background-color: #ccc;
+          }
+          
+          /* When the checkbox is checked, add a blue background */
+          .check input:checked ~ .checkmark {
+            background-color: #2196F3;
+          }
+          
+          /* Create the checkmark/indicator (hidden when not checked) */
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+          
+          /* Show the checkmark when checked */
+          .check input:checked ~ .checkmark:after {
+            display: block;
+          }      
+          /* Style the checkmark/indicator */
+          .check .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+          table {
+            border-collapse: collapse;
+            width: 100%;
+            color: hsl(235, 19%, 35%);
+
+          }
+          td {
+            padding: 15px 0px;
+            text-align: left;
+            border-bottom: 1px solid rgb(196, 141, 141);
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+
+          }
+          .item-checked{
+            text-decoration: line-through;
+            color: hsla(235, 11%, 43%, 0.651);
+          }
+          .over-fo{
+            padding: 15px 10px 0px 0px;
+            color: hsl(235, 19%, 35%);
+            font-size: 15px;
+          }
+          .links{
+            margin-left: 100px;
+          }
+          a{
+            margin: 7px;
+          }
+          .dark-mode{
+            background-image:  url({% static 'images/bg-dark-image.jpg' %});
+            background-color: hsl(235, 21%, 11%);
+
+          }
+          .drk-md-toggle{
+            margin-left: 100px;
+          }
+          .drk-con{
+          background-color: hsl(235, 24%, 19%);
+          
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heading">
+      T O D O
+    <button onclick="myFunction()" class='drk-md-toggle' id='logo'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/></svg>
+    </button>
+    </div>
+    <div class="new-item" id='nw-itm'>
+        <form method='POST'>
+            {% csrf_token %}
+            <label class="check">
+                <input type="checkbox" name="checkbox" >
+                <span name='checkbox' id='drk-btn' class="checkmark"></span>
+            </label>
+            <input  id='nw-inpt' type="text" class='center' placeholder="Create a new todo..." name='item_title' required>
+            <button class="addBtn" type='submit'>submit</button>   
+        </form>
+    </div>
+
+    <div class="container"  id="drk-con">
+        <table id="drk-con1">
+          {% for item in items %}
+            {% if item.active is True %}
+              <tr class="checked">
+                <td>
+                  <form action="/update_active/{{item.id}}/" method = "post">{% csrf_token %}
+                    <label class="check">
+                      <button><input type="checkbox" checked>
+                      <span name='checkbox' class="checkmark"></span></button>
+                  </label>  
+                  </form>
+                </td>
+                <td class="item-checked">{{item.title}}</td>      
+                <td>
+                  <form action="/delete/{{item.id}}/" method = "post">{% csrf_token %}
+                    <button>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" color='black'><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            {% else %}
+            <tr>
+              <td>
+                <form action="/update_active/{{item.id}}/" method = "post">{% csrf_token %}
+                  <label class="check">
+                    <button><input type="checkbox"></button>
+                    <span name='checkbox' class="checkmark"></span>
+                </form>
+              </td>
+              <td>{{item.title}}</td>
+              <td>
+                <form action="/delete/{{item.id}}/" method = "post">{% csrf_token %}
+                  <button>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" color='black'><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
+                  </button>
+                </form>
+              </td> 
+            </tr>
+            {% endif %}   
+          {% endfor %}
+        </table>
+        <div class="over-fo">
+          {{item_left}} items left
+          <span class='links'>
+            <a href="/">All</a>
+            <a href='/active/'>Active</a>
+            <a href='/completed/'>Completed</a>
+          </span>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock content %}
