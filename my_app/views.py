@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-from .models import item_model
+from django.shortcuts import redirect, render
+
 from .forms import item_form
+from .models import item_model
+
 # Create your views here.
 
 def home(request):
-    #form = item_form()
     items = item_model.objects.all().order_by('-id')
     items_left = item_model.objects.filter(active='False').count()
     if request.method == 'POST':
@@ -33,6 +34,7 @@ def update_active(request, pk):
     item.active = not item.active
     item.save()
     return redirect('/')
+    
 def delete(request, pk):
     item = item_model.objects.get(id=pk)
     item.delete()
